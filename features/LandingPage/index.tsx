@@ -30,8 +30,6 @@ const LandingPage = ({ip, loc, status}: LandingPageProps) => {
         (async () => {
             const wd = await getWeatherData(loc.lat, loc.lon)
             setWeatherData(wd)
-            //console.log(wd)
-            console.log(`status: ${status} \n${ip} \n${loc.city}`)
         })();
     }, [])
 

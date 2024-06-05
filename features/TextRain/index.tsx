@@ -20,7 +20,6 @@ const TextRain = (p: TextRainProps) => {
     const [texts, setTexts] = useState<TextProps[]>([])
 
     function removeText(id: string) {
-        console.log(id)
         //setTexts(texts.filter(t => t.id !== id))
     }
 

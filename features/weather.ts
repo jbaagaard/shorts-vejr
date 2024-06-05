@@ -81,11 +81,15 @@ export function apparentTemperature(Tc:number, Vkmh:number, R:number, P:number) 
 }
 
 export async function getWeatherData(lat: number, lon: number) {
-    const yrNoWeather = await fetch(` https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`, {
+    const shortLat = lat.toFixed(1) 
+    const shortLon = lon.toFixed(1)
+    const yrNoWeather = await fetch(` https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${shortLat}&lon=${shortLon}`, {
         method: "GET",
         credentials: 'same-origin',
+        next: {
+            revalidate: 6000
+        },
     }).then(res => res.json())
-    console.log(yrNoWeather)
     let weatherData: WeatherData[] = []
     yrNoWeather.properties.timeseries.map((h: any) =>
         weatherData.push({

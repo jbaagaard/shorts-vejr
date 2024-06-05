@@ -16,9 +16,7 @@ const Location = ({city,onPosGotten}: LocationProps) => {
         if(done) setUpdatedPos(true)
     }
 
-    function error(e:any) {
-        console.log(e)
-    }
+    function error(e:any) {}
 
     function getPos() {
         if(updatedPos) return;
